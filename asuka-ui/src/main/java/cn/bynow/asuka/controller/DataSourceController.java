@@ -1,6 +1,8 @@
-package cn.bynow.asuka.jxf.controller;
+package cn.bynow.asuka.controller;
 
+import cn.bynow.asuka.service.IDataSourceService;
 import de.felixroske.jfxsupport.FXMLController;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author Bynow
@@ -9,5 +11,7 @@ import de.felixroske.jfxsupport.FXMLController;
  */
 @FXMLController
 public class DataSourceController {
+
+
 
 }

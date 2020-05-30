@@ -1,13 +1,14 @@
 package cn.bynow.asuka;
 
-import cn.bynow.asuka.jxf.view.MainView;
-import cn.bynow.asuka.jxf.view.SplashView;
+import cn.bynow.asuka.view.MainView;
+import cn.bynow.asuka.view.SplashView;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import de.felixroske.jfxsupport.GUIState;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+
 
 @SpringBootApplication
 public class AsukaApplication extends AbstractJavaFxApplicationSupport {
