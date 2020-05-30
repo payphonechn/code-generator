@@ -3,6 +3,6 @@ spring:
     enabled: false
 
 javafx:
-  title: MyCoolApp111
+  title: asuka
   stage:
     resizable: true
