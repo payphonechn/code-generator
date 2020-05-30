@@ -3,6 +3,6 @@ spring:
     enabled: false
 
 javafx:
-  title: asuka
+  title: asuka-generator
   stage:
     resizable: true

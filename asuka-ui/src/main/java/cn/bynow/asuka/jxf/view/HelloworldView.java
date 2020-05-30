@@ -1,4 +1,4 @@
-package cn.bynow.asuka;
+package cn.bynow.asuka.jxf.view;
 
 import de.felixroske.jfxsupport.AbstractFxmlView;
 import de.felixroske.jfxsupport.FXMLView;
