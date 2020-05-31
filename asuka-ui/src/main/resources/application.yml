@@ -1,0 +1,19 @@
+spring:
+  jmx:
+    enabled: false
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test??useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+
+javafx:
+  title: asuka-generator
+  stage:
+    resizable: true
+
+# Mybatis配置
+mybatis:
+  mapperLocations: classpath:mapper/**/*.xml
+
