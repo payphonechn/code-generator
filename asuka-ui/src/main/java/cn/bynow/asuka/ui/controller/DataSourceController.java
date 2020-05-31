@@ -1,8 +1,6 @@
-package cn.bynow.asuka.controller;
+package cn.bynow.asuka.ui.controller;
 
-import cn.bynow.asuka.service.IDataSourceService;
 import de.felixroske.jfxsupport.FXMLController;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author Bynow

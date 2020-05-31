@@ -1,4 +1,4 @@
-package cn.bynow.asuka.view;
+package cn.bynow.asuka.ui.view;
 
 import de.felixroske.jfxsupport.SplashScreen;
 import javafx.scene.Parent;

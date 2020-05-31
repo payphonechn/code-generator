@@ -1,16 +1,19 @@
-package cn.bynow.asuka;
+package cn.bynow.asuka.ui;
 
-import cn.bynow.asuka.view.MainView;
-import cn.bynow.asuka.view.SplashView;
+import cn.bynow.asuka.ui.view.MainView;
+import cn.bynow.asuka.ui.view.SplashView;
 import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import de.felixroske.jfxsupport.GUIState;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "cn.bynow.asuka.*")
+@MapperScan("cn.bynow.asuka.core.mapper")
 public class AsukaApplication extends AbstractJavaFxApplicationSupport {
     public static void main(String[] args) {
         launch(AsukaApplication.class, MainView.class, new SplashView(), args);
