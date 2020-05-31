@@ -1,5 +1,6 @@
 package cn.bynow.asuka.ui.controller;
 
+import cn.bynow.asuka.core.service.AsukaGenMysqlService;
 import cn.bynow.asuka.core.service.TestService;
 import cn.bynow.asuka.ui.AsukaApplication;
 import cn.bynow.asuka.ui.view.DataSourceView;
@@ -17,6 +18,9 @@ public class MainController {
 
     @Autowired
     private TestService testService;
+
+    @Autowired
+    private AsukaGenMysqlService asukaGenMysqlService;
 
 
     @FXML
