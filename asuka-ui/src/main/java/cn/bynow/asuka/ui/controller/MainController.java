@@ -1,7 +1,6 @@
 package cn.bynow.asuka.ui.controller;
 
 import cn.bynow.asuka.core.service.AsukaGenMysqlService;
-import cn.bynow.asuka.core.service.TestService;
 import cn.bynow.asuka.ui.AsukaApplication;
 import cn.bynow.asuka.ui.view.DataSourceView;
 import de.felixroske.jfxsupport.FXMLController;
@@ -17,9 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class MainController {
 
     @Autowired
-    private TestService testService;
-
-    @Autowired
     private AsukaGenMysqlService asukaGenMysqlService;
 
 
@@ -27,7 +23,7 @@ public class MainController {
     private void choose() {
         try {
             AsukaApplication.showView(DataSourceView.class);
-            testService.test();
+            asukaGenMysqlService.test();
         } catch (Exception e) {
             e.printStackTrace();
         }

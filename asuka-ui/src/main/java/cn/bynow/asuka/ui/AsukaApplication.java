@@ -6,14 +6,11 @@ import de.felixroske.jfxsupport.AbstractJavaFxApplicationSupport;
 import de.felixroske.jfxsupport.GUIState;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 
-
-@SpringBootApplication(scanBasePackages = "cn.bynow.asuka.*")
-@MapperScan("cn.bynow.asuka.core.mapper")
+@SpringBootApplication(scanBasePackages = "cn.bynow.asuka.*",exclude={DataSourceAutoConfiguration.class})
 public class AsukaApplication extends AbstractJavaFxApplicationSupport {
     public static void main(String[] args) {
         launch(AsukaApplication.class, MainView.class, new SplashView(), args);
