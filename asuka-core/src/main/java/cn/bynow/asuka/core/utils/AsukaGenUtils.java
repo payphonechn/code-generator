@@ -49,7 +49,6 @@ public class AsukaGenUtils {
         //表名转换成Java类名
         String className = columnToJava(tableEntity.getTableName());
         tableEntity.setClassName(className);
-        tableEntity.setClassname(StringUtils.uncapitalize(className));
 
         //列信息
         List<ColumnEntity> columsList = new ArrayList<>();
@@ -63,7 +62,6 @@ public class AsukaGenUtils {
             //列名转换成Java属性名
             String attrName = columnToJava(columnEntity.getColumnName());
             columnEntity.setAttrName(attrName);
-            columnEntity.setAttrname(StringUtils.uncapitalize(attrName));
 
             //列的数据类型，转换成Java类型
             String attrType = columnEntity.getDataType();
@@ -96,8 +94,7 @@ public class AsukaGenUtils {
         map.put("comments", tableEntity.getComments());
         map.put("pk", tableEntity.getPk());
         map.put("className", tableEntity.getClassName());
-        map.put("classname", tableEntity.getClassname());
-        map.put("pathName", tableEntity.getClassname().toLowerCase());
+        map.put("pathName", tableEntity.getClassName());
         map.put("columns", tableEntity.getColumns());
         map.put("hasBigDecimal", hasBigDecimal);
         map.put("mainPath", mainPath);
