@@ -22,7 +22,7 @@ public class AsukaGenMysqlService {
     private final String URL = "jdbc:mysql://127.0.0.1:3306/guns?useUnicode=true&amp;characterEncoding=UTF-8&amp;useInformationSchema=true&amp;useSSL=false";
     private final String DRIVER = "com.mysql.jdbc.Driver";
     private final String USER = "root";
-    private final String PASSWORD = "root0301!";
+    private final String PASSWORD = "root!";
 
     public void test() throws Exception {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
