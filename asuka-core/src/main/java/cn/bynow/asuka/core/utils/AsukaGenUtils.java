@@ -161,7 +161,7 @@ public class AsukaGenUtils {
         }
 
         if (template.contains("Dao.java.vm" )) {
-            return File.separator + className + "Dao.java";
+            return File.separator + className + "asukaDao.java";
         }
 
         if (template.contains("Service.java.vm" )) {

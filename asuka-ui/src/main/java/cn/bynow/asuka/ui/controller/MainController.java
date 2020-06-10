@@ -1,11 +1,9 @@
 package cn.bynow.asuka.ui.controller;
 
-import cn.bynow.asuka.core.service.AsukaGenMysqlService;
 import cn.bynow.asuka.ui.AsukaApplication;
-import cn.bynow.asuka.ui.view.DataSourceView;
+import cn.bynow.asuka.ui.view.MysqlSourceView;
 import de.felixroske.jfxsupport.FXMLController;
 import javafx.fxml.FXML;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author Bynow
@@ -15,18 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 @FXMLController
 public class MainController {
 
-    @Autowired
-    private AsukaGenMysqlService asukaGenMysqlService;
-
 
     @FXML
     private void choose() {
-        try {
-            AsukaApplication.showView(DataSourceView.class);
-            asukaGenMysqlService.test();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        AsukaApplication.showView(MysqlSourceView.class);
     }
 
 }
