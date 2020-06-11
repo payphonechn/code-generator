@@ -26,11 +26,11 @@ import java.util.*;
  */
 public class AsukaGenUtils {
 
-    public static List<String> getTemplates(){
+    public static List<String> getTemplates() {
         List<String> templates = new ArrayList<String>();
         templates.add("template/Entity.java.vm");
-        templates.add("template/Dao.java.vm");
-        templates.add("template/Dao.xml.vm");
+        templates.add("template/Mapper.java.vm");
+        templates.add("template/Mapper.xml.vm");
         templates.add("template/Service.java.vm");
         templates.add("template/ServiceImpl.java.vm");
         templates.add("template/Controller.java.vm");
@@ -40,24 +40,24 @@ public class AsukaGenUtils {
     /**
      * 生成代码
      */
-    public static void generatorCode(Map<String, String> table,List<Map<String, String>> columns) throws Exception {
+    public static void generatorCode(Map<String, String> table, List<Map<String, String>> columns) throws Exception {
         boolean hasBigDecimal = false;
         //表信息
         TableEntity tableEntity = new TableEntity();
-        tableEntity.setTableName(table.get("tableName" ));
-        tableEntity.setComments(table.get("tableComment" ));
+        tableEntity.setTableName(table.get("tableName"));
+        tableEntity.setComments(table.get("tableComment"));
         //表名转换成Java类名
         String className = columnToJava(tableEntity.getTableName());
         tableEntity.setClassName(className);
 
         //列信息
         List<ColumnEntity> columsList = new ArrayList<>();
-        for(Map<String, String> column : columns){
+        for (Map<String, String> column : columns) {
             ColumnEntity columnEntity = new ColumnEntity();
-            columnEntity.setColumnName(column.get("columnName" ));
-            columnEntity.setDataType(column.get("dataType" ));
-            columnEntity.setComments(column.get("columnComment" ));
-            columnEntity.setExtra(column.get("extra" ));
+            columnEntity.setColumnName(column.get("columnName"));
+            columnEntity.setDataType(column.get("dataType"));
+            columnEntity.setComments(column.get("columnComment"));
+            columnEntity.setExtra(column.get("extra"));
 
             //列名转换成Java属性名
             String attrName = columnToJava(columnEntity.getColumnName());
@@ -66,11 +66,11 @@ public class AsukaGenUtils {
             //列的数据类型，转换成Java类型
             String attrType = columnEntity.getDataType();
             columnEntity.setAttrType(attrType);
-            if (!hasBigDecimal && attrType.equals("BigDecimal" )) {
+            if (!hasBigDecimal && attrType.equals("BigDecimal")) {
                 hasBigDecimal = true;
             }
             //是否主键
-            if ("PRI".equalsIgnoreCase(column.get("columnKey" )) && tableEntity.getPk() == null) {
+            if ("PRI".equalsIgnoreCase(column.get("columnKey")) && tableEntity.getPk() == null) {
                 tableEntity.setPk(columnEntity);
             }
 
@@ -85,7 +85,7 @@ public class AsukaGenUtils {
 
         //设置velocity资源加载器
         Properties prop = new Properties();
-        prop.put("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader" );
+        prop.put("file.resource.loader.class", "org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
         Velocity.init(prop);
         String mainPath = "cn.bynow.asuka";
         //封装模板数据
@@ -109,17 +109,17 @@ public class AsukaGenUtils {
         List<String> templates = getTemplates();
         for (String template : templates) {
             try {
-            //渲染模板
-            Template tpl = Velocity.getTemplate(template, "UTF-8" );
+                //渲染模板
+                Template tpl = Velocity.getTemplate(template, "UTF-8");
 
-            File saveFile = new File("D:\\test\\"+getFileName(template, "","", "asuka"));
-            FileOutputStream outStream = new FileOutputStream(saveFile);
-            OutputStreamWriter writer = new OutputStreamWriter(outStream);
-            BufferedWriter bufferWriter = new BufferedWriter(writer);
-            tpl.merge(context, bufferWriter);
-            bufferWriter.flush();
-            outStream.close();
-            bufferWriter.close();
+                File saveFile = new File("D:\\test\\" + getFileName(template, "", "", "asuka"));
+                FileOutputStream outStream = new FileOutputStream(saveFile);
+                OutputStreamWriter writer = new OutputStreamWriter(outStream);
+                BufferedWriter bufferWriter = new BufferedWriter(writer);
+                tpl.merge(context, bufferWriter);
+                bufferWriter.flush();
+                outStream.close();
+                bufferWriter.close();
 
 
             } catch (Exception e) {
@@ -133,7 +133,7 @@ public class AsukaGenUtils {
      * 列名转换成Java属性名
      */
     public static String columnToJava(String columnName) {
-        return WordUtils.capitalizeFully(columnName, new char[]{'_'}).replace("_", "" );
+        return WordUtils.capitalizeFully(columnName, new char[]{'_'}).replace("_", "");
     }
 
     /**
@@ -141,7 +141,7 @@ public class AsukaGenUtils {
      */
     public static Configuration getConfig() throws Exception {
         try {
-            return new PropertiesConfiguration("generator.properties" );
+            return new PropertiesConfiguration("generator.properties");
         } catch (ConfigurationException e) {
             throw new Exception("获取配置文件失败，", e);
         }
@@ -156,28 +156,28 @@ public class AsukaGenUtils {
             packagePath += packageName.replace(".", File.separator) + File.separator + moduleName + File.separator;
         }
 
-        if (template.contains("Entity.java.vm" )) {
+        if (template.contains("Entity.java.vm")) {
             return File.separator + className + "Entity.java";
         }
 
-        if (template.contains("Dao.java.vm" )) {
+        if (template.contains("Mapper.java.vm")) {
             return File.separator + className + "asukaDao.java";
         }
 
-        if (template.contains("Service.java.vm" )) {
+        if (template.contains("Service.java.vm")) {
             return File.separator + className + "Service.java";
         }
 
-        if (template.contains("ServiceImpl.java.vm" )) {
+        if (template.contains("ServiceImpl.java.vm")) {
             return File.separator + className + "ServiceImpl.java";
         }
 
-        if (template.contains("Controller.java.vm" )) {
-            return   File.separator + className + "Controller.java";
+        if (template.contains("Controller.java.vm")) {
+            return File.separator + className + "Controller.java";
         }
 
-        if (template.contains("Dao.xml.vm" )) {
-            return   File.separator + className + "Dao.xml";
+        if (template.contains("Mapper.xml.vm")) {
+            return File.separator + className + "Dao.xml";
         }
 
         return null;

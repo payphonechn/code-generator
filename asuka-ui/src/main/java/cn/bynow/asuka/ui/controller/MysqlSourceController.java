@@ -57,7 +57,12 @@ public class MysqlSourceController {
         try{
             asukaGenMysqlService.generatorCodeForMysql(domin);
         }catch (Exception e){
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("ERROR Dialog");
+            alert.setHeaderText("ERROR");
+            alert.setContentText("SERVER EXCEPTION!");
+            alert.showAndWait();
+            return false;
         }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
@@ -95,7 +100,7 @@ public class MysqlSourceController {
 
     private boolean warningMsg(String desc){
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Information Dialog");
+        alert.setTitle("WARNING Dialog");
         alert.setHeaderText("WARNING");
         alert.setContentText(desc + "can not be null");
         alert.showAndWait();

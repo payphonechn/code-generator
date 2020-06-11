@@ -22,7 +22,6 @@ import com.suke.czx.common.utils.R;
  * ${comments}
  * 
  * @author ${author}
- * @email ${email}
  * @date ${datetime}
  */
 @RestController
@@ -42,8 +41,6 @@ public class ${className}Controller {
 
         List<${className}Entity> ${classname}List = ${classname}Service.queryList(query);
         int total = ${classname}Service.queryTotal(query);
-
-        PageUtils pageUtil = new PageUtils(${classname}List, total, query.getLimit(), query.getPage());
 
         return R.ok().put("page", pageUtil);
     }

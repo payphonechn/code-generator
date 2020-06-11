@@ -29,5 +29,4 @@ public class AsukaGenMysqlService {
         AsukaGenUtils.generatorCode(table, columns);
     }
 
-
 }
