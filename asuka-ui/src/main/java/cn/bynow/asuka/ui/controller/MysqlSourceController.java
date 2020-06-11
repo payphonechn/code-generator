@@ -38,18 +38,26 @@ public class MysqlSourceController {
     @FXML
     private TextField database;
 
+    @FXML
+    private TextField user;
+
 
 
     @FXML
-    private void atCode() {
-        validParams();
+    private boolean atCode() {
+        if (!validParams()) return false;
         MysqlDominEntity domin = new MysqlDominEntity();
-        domin.setAuthor(author.getText());
-        System.out.println(database.getText());
+        domin.setAuthor(author.getText().trim());
+        domin.setPackagePath(packagePath.getText().trim());
+        domin.setDatabase(database.getText().trim());
+        domin.setFilePath(filePath.getText().trim());
+        domin.setPassword(password.getText().trim());
+        domin.setTableName(tableName.getText().trim());
+        domin.setUser(user.getText().trim());
         try{
-            asukaGenMysqlService.test();
+            asukaGenMysqlService.generatorCodeForMysql(domin);
         }catch (Exception e){
-
+            e.printStackTrace();
         }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
@@ -57,34 +65,40 @@ public class MysqlSourceController {
         alert.setContentText("I have a great message for you!");
 
         alert.showAndWait();
+        return true;
     }
 
-    private void validParams(){
+    private boolean validParams(){
         if (StringUtils.isBlank(packagePath.getText())){
-            warningMsg("packagePath");
+            return warningMsg("packagePath ");
         }
         if (StringUtils.isBlank(author.getText())){
-            warningMsg("author");
+            return warningMsg("author ");
         }
         if (StringUtils.isBlank(filePath.getText())){
-            warningMsg("filePath");
+            return warningMsg("filePath ");
         }
         if (StringUtils.isBlank(password.getText())){
-            warningMsg("password");
+            return warningMsg("password ");
         }
         if (StringUtils.isBlank(tableName.getText())){
-            warningMsg("tableName");
+            return warningMsg("tableName ");
         }
         if (StringUtils.isBlank(database.getText())){
-            warningMsg("database");
+            return warningMsg("database ");
         }
+        if (StringUtils.isBlank(user.getText())){
+            return warningMsg("user ");
+        }
+        return true;
     }
 
-    private void warningMsg(String desc){
+    private boolean warningMsg(String desc){
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Information Dialog");
         alert.setHeaderText("WARNING");
         alert.setContentText(desc + "can not be null");
         alert.showAndWait();
+        return false;
     }
 }

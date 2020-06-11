@@ -15,6 +15,7 @@ public class MysqlDominEntity {
     private String password;
     private String tableName;
     private String database;
+    private String user;
 
 
 }
