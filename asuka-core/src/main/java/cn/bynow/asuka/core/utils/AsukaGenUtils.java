@@ -165,7 +165,7 @@ public class AsukaGenUtils {
     public static String getFileName(String template, String className) {
 
         if (template.contains("Entity.java.vm")) {
-            return File.separator + className + "Entity.java";
+            return File.separator + className + ".java";
         }
 
         if (template.contains("Mapper.java.vm")) {

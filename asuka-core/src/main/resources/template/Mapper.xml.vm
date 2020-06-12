@@ -3,13 +3,13 @@
 
 <mapper namespace="${mainPath}.mapper.${className}Mapper">
 
-    <resultMap type="${mainPath}.entity.${className}Entity" id="${classname}Map">
+    <resultMap type="${mainPath}.model.${className}" id="${classname}Map">
         #foreach($column in $columns)
             <result property="${column.attrname}" column="${column.columnName}"/>
         #end
     </resultMap>
 
-    <select id="selectByPrimaryKey" resultType="${mainPath}.entity.${className}Entity">
+    <select id="selectByPrimaryKey" resultType="${mainPath}.model.${className}">
 		SELECT * FROM ${tableName} WHERE ${pk.columnName} = #{${pk.attrname}}
 	</select>
 
@@ -25,7 +25,7 @@
         ORDER BY ${pk.columnName} DESC
     </select>
 
-    <insert id="insertSelective" parameterType="${mainPath}.entity.${className}Entity"#if($pk.extra == 'auto_increment')
+    <insert id="insertSelective" parameterType="${mainPath}.model.${className}"#if($pk.extra == 'auto_increment')
             useGeneratedKeys="true" keyProperty="$pk.attrname"#end>
         INSERT INTO ${tableName}
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -44,7 +44,7 @@
         </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="${mainPath}.entity.${className}Entity">
+    <update id="updateByPrimaryKeySelective" parameterType="${mainPath}.model.${className}">
         UPDATE
         ${tableName}
         <set>

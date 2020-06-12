@@ -1,6 +1,6 @@
 package ${mainPath}.mapper;
 
-import ${mainPath}.entity.${className}Entity;
+import ${mainPath}.model.${className};
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -15,17 +15,17 @@ import java.util.List;
 public interface ${className}Mapper{
 
     //查询实例
-    ${className}Entity selectByPrimaryKey(${pk.attrType} ${pk.attrname});
+    ${className} selectByPrimaryKey(${pk.attrType} ${pk.attrname});
 
     //根据参数查询列表
-    List<${className}Entity> selectByParams(${className}Entity entity);
+    List<${className}> selectByParams(${className} entity);
 
-    void insertSelective(${className}Entity entity);
+    void insertSelective(${className} entity);
 
-    void updateByPrimaryKeySelective(${className}Entity entity);
+    void updateByPrimaryKeySelective(${className} entity);
 
     void deleteByPrimaryKey(${pk.attrType} ${pk.attrname});
 
-    void insertBatch(List<${className}Entity> entities);
+    void insertBatch(List<${className}> entities);
 	
 }

@@ -1,55 +1,42 @@
-package ${package}.${moduleName}.service.impl;
+package ${mainPath}.service.impl;
 
+import ${mainPath}.service.${className}Service;
+import ${mainPath}.mapper.${className}Mapper;
+import ${mainPath}.model.${className};
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Map;
-
-import ${package}.${moduleName}.dao.${className}Dao;
-import ${package}.${moduleName}.entity.${className}Entity;
-import ${package}.${moduleName}.service.${className}Service;
 
 
 
-@Service("${classname}Service")
+
+
+
+@Service
 public class ${className}ServiceImpl implements ${className}Service {
 	@Autowired
-	private ${className}Dao ${classname}Dao;
+	private ${className}Mapper ${classname}Mapper;
 	
 	@Override
-	public ${className}Entity queryObject(${pk.attrType} ${pk.attrname}){
-		return ${classname}Dao.queryObject(${pk.attrname});
+	public ${className} getInfo(${pk.attrType} ${pk.attrname}){
+		return ${classname}Mapper.selectByPrimaryKey(${pk.attrname});
 	}
 	
 	@Override
-	public List<${className}Entity> queryList(Map<String, Object> map){
-		return ${classname}Dao.queryList(map);
+	public List<${className}> getData(${className} entity){
+		return ${classname}Mapper.selectByParams(entity);
+	}
+
+	
+	@Override
+	public void save${className}(${className} entity){
+			${classname}Mapper.insertSelective(entity);
 	}
 	
 	@Override
-	public int queryTotal(Map<String, Object> map){
-		return ${classname}Dao.queryTotal(map);
+	public void update${className}(${className} entity){
+		${classname}Mapper.updateByPrimaryKeySelective(entity);
 	}
-	
-	@Override
-	public void save(${className}Entity ${classname}){
-		${classname}Dao.save(${classname});
-	}
-	
-	@Override
-	public void update(${className}Entity ${classname}){
-		${classname}Dao.update(${classname});
-	}
-	
-	@Override
-	public void delete(${pk.attrType} ${pk.attrname}){
-		${classname}Dao.delete(${pk.attrname});
-	}
-	
-	@Override
-	public void deleteBatch(${pk.attrType}[] ${pk.attrname}s){
-		${classname}Dao.deleteBatch(${pk.attrname}s);
-	}
+
 	
 }
