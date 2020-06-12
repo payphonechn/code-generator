@@ -1,7 +1,9 @@
-package ${package}.${moduleName}.mapper;
+package ${mainPath}.mapper;
 
-import ${package}.${moduleName}.entity.${className}Entity;
+import ${mainPath}.entity.${className}Entity;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
 /**
  * ${comments}
@@ -12,16 +14,18 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ${className}Mapper{
 
-
-    ${className}Entity queryByPrimaryKey(${pk.attrType} ${pk.attrname});
+    //查询实例
+    ${className}Entity selectByPrimaryKey(${pk.attrType} ${pk.attrname});
 
     //根据参数查询列表
-    List<${className}Entity> queryList(${className}Entity entity);
+    List<${className}Entity> selectByParams(${className}Entity entity);
 
-    void save(${className}Entity entity);
+    void insertSelective(${className}Entity entity);
 
-    void update(${className}Entity entity);
+    void updateByPrimaryKeySelective(${className}Entity entity);
 
-    void delete(${pk.attrType} ${pk.attrname});
+    void deleteByPrimaryKey(${pk.attrType} ${pk.attrname});
+
+    void insertBatch(List<${className}Entity> entities);
 	
 }
