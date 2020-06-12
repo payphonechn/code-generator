@@ -26,7 +26,7 @@ public class AsukaGenMysqlService {
         //根据表名查询表实例
         Map table = template.queryForMap("select table_name tableName, engine, table_comment tableComment, create_time createTime from information_schema.tables where table_schema = (select database()) and table_name = '" + domin.getTableName() + "'");
         List columns = template.queryForList("select column_name columnName, data_type dataType, column_comment columnComment, column_key columnKey, extra from information_schema.columns where table_name = '" + domin.getTableName() + "' and table_schema = (select database()) order by ordinal_position");
-        AsukaGenUtils.generatorCode(table, columns);
+        AsukaGenUtils.generatorCode(table, columns,domin);
     }
 
 }

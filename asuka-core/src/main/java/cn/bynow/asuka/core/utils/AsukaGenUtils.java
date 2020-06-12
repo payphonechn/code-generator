@@ -18,13 +18,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.*;
 
-/**
- * 代码生成器   工具类
- *
- * @author czx
- * @email object_czx@163.com
- * @date 2016年12月19日 下午11:40:24
- */
+
 public class AsukaGenUtils {
 
     public static List<String> getTemplates() {
