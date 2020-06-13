@@ -1,6 +1,6 @@
 # Asuka BETA
 🐦🐦🐦🐦🐦
-*asuka 基于velocity模板引擎的代码生成器，不限制生成的目标代码语言与代码风格*
+*asuka 是基于velocity模板引擎的代码生成器，不限制生成的目标代码语言与代码风格*
 ## 简要说明
 maven多模块构建的springboot整合javaFX项目
 半自动化图形界面代码生成器，UI很简陋，想优化但优化不动。
@@ -21,9 +21,7 @@ asuka-ui springboot整合javaFX的部分，UI界面代码
 asuka-core 代码生成器业务逻辑部分
 asuka-api(待开发)
 
-velocity模板引擎在core模块resource目录下，目前仅编辑了一套最简单的适配Java的模板，生成代码后使用的实例可以参考[asuka-example](https://github.com/ByNow/asuka-example)，示例模块包结构如下
-![image](
-https://cdn.u1.huluxia.com/g4/M02/6B/5A/rBAAdl7kGneAIvePAABSe-pnU_I367.jpg)
+velocity模板引擎在core模块resource目录下，目前仅编辑了一套最简单的适配Java的模板，生成代码后使用的实例可以参考[asuka-example](https://github.com/ByNow/asuka-example)
 
 
 
