@@ -104,22 +104,20 @@ public class AsukaGenUtils {
         //获取模板列表
         List<String> templates = getTemplates();
         for (String template : templates) {
+            //渲染模板
+            Template tpl = Velocity.getTemplate(template, "UTF-8");
+            File saveFile = new File(domin.getFilePath() + getFileName(template, className));
+            FileOutputStream outStream = new FileOutputStream(saveFile);
+            OutputStreamWriter writer = new OutputStreamWriter(outStream);
+            BufferedWriter bufferWriter = new BufferedWriter(writer);
             try {
-                //渲染模板
-                Template tpl = Velocity.getTemplate(template, "UTF-8");
-
-                File saveFile = new File(domin.getFilePath() + getFileName(template, className));
-                FileOutputStream outStream = new FileOutputStream(saveFile);
-                OutputStreamWriter writer = new OutputStreamWriter(outStream);
-                BufferedWriter bufferWriter = new BufferedWriter(writer);
                 tpl.merge(context, bufferWriter);
                 bufferWriter.flush();
-                outStream.close();
-                bufferWriter.close();
-
-
             } catch (Exception e) {
                 throw new Exception("渲染模板失败，表名：" + tableEntity.getTableName(), e);
+            } finally {
+                outStream.close();
+                bufferWriter.close();
             }
         }
     }
