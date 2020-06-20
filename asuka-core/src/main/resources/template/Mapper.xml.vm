@@ -57,28 +57,6 @@
         WHERE ${pk.columnName} = #{${pk.attrname}}
     </update>
 
-
-    <insert id="insertBatch">
-        INSERT INTO
-        ${tableName}
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            #foreach($column in $columns)
-                <if test="${column.attrname} != null">
-                    ${column.columnName},
-                </if>
-            #end
-        </trim>
-        VALUES
-        <foreach collection="list" item="item" index="index" separator=",">
-            (
-            #foreach($column in $columns)
-                #{item.${column.columnName}},
-            #end
-            )
-        </foreach>
-        <!--这个批量插入的语句这里多了一个逗号,我暂时没查到vm引擎里去末尾逗号语句怎么写(可以去掉这个方法)-->
-    </insert>
-
     <delete id="deleteByPrimaryKey">
       DELETE FROM ${tableName}  WHERE ${pk.columnName} = #{${pk.attrname}}
     </delete>

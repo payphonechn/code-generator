@@ -25,7 +25,5 @@ public interface ${className}Mapper{
     void updateByPrimaryKeySelective(${className} entity);
 
     void deleteByPrimaryKey(${pk.attrType} ${pk.attrname});
-
-    void insertBatch(List<${className}> entities);
 	
 }
