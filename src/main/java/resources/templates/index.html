@@ -16,7 +16,7 @@
 
 <nav class="navbar navbar-inverse">
 
-  <div class="collapse navbar-collapse" id="myNavbar">
+  <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
       <li><a href="#">文档</a></li>
       <li class="active"><a href="../templates/dbconfig.html">数据源配置</a></li>
@@ -29,17 +29,15 @@
 
 <div class="container">
   <div class="row">
-    <form>
       <div class="form-group">
         <label>数据库类型</label>
-        <input readonly class="form-control" value="mysql" >
+        <input readonly class="form-control" id="mysql_key" value="mysql" >
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">数据库连接串</label>
-        <input class="form-control" id="exampleInputPassword1">
+        <label>数据库连接串</label>
+        <input class="form-control" id="mysql_value">
       </div>
       <button type="button" class="btn" id="btn1">测试连接</button>
-    </form>
   </div>
 </div>
 </div>
@@ -55,23 +53,20 @@
 </body>
 </html>
 <script>
-  $("#btn1").click(function() {
+  $('#btn1').click(function () {
+    var _mysqlkey = $('#mysql_key').val();
+    var _mysqlvalue = $('#mysql_value').val();
+    var obj = '[{"key":"'+_mysqlkey+'","value":"'+_mysqlvalue+'"}]';
     $.ajax({
-      url: "/hello",
-      type: "post",
-      data: $("#form-add").serialize(),
-      dataType: "json",
-      success: function(res) {
-        if (res.success) {
-          alert(res.msg);
-          location.href="/hello";
-        } else {
-          alert("注册失败！" + res.message);
-        }
-      },
-      error:function(xhr){
-        alert("发生错误"+xhr.status);
+      type: 'post',
+      url: '/updateDbConfig',
+      contentType: "application/json; charset=utf-8",
+      data: JSON.stringify({beans:obj}),
+      dataType: 'json',
+      success: function (result) {
+        alert(result.d);
       }
     });
+    return false;
   });
 </script>
