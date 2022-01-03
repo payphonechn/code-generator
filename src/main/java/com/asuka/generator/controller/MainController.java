@@ -4,10 +4,9 @@ import cn.hutool.core.io.file.FileReader;
 import cn.hutool.core.io.file.FileWriter;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.asuka.generator.entity.DbEntity;
+import com.asuka.generator.model.DbEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author payphone
@@ -20,8 +19,6 @@ public class MainController {
     @RequestMapping("/hello")
     public String test(){
         FileReader fileReader = new FileReader("D:\\work\\workplace\\local\\code-generator\\src\\main\\java\\resources\\db.json");
-
-
         DbEntity db = new DbEntity();
         db.setKey("MySql");
         db.setValue("link");

@@ -1,4 +1,4 @@
-package com.asuka.generator.entity;
+package com.asuka.generator.model;
 
 import lombok.Data;
 
