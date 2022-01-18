@@ -17,7 +17,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>code-generator-web</module>
+        <module>code-generator-server</module>
+        <module>code-generator-ui</module>
     </modules>
 
     <properties>
