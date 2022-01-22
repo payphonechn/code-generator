@@ -24,10 +24,23 @@ export const constantRoutes = [
     redirect: '/dashboard',
     children: [{
       path: 'dashboard',
-      name: 'DOC',
+      name: 'Doc',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'DOC', icon: 'form' }
+      meta: { title: 'Doc', icon: 'form' }
     }]
+  },
+
+  {
+    path: '/datasource',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Dashboard',
+        component: () => import('@/views/form/index'),
+        meta: { title: 'Datasource', icon: 'dashboard' }
+      }
+    ]
   },
 
   {
