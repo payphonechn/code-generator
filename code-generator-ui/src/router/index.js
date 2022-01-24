@@ -6,11 +6,11 @@ Vue.use(Router)
 /* Layout */
 import Layout from '@/layout'
 export const constantRoutes = [
-  {
+/*  {
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true
-  },
+  },*/
 
   {
     path: '/404',
@@ -25,7 +25,7 @@ export const constantRoutes = [
     children: [{
       path: 'dashboard',
       name: 'Doc',
-      component: () => import('@/views/dashboard/index'),
+      component: () => import('@/views/datasource/add'),
       meta: { title: 'Doc', icon: 'form' }
     }]
   },
