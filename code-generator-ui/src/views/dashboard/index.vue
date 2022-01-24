@@ -5,16 +5,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+  import  { getInfo  } from '@/api/addDb.js'
 
-export default {
-  name: 'Dashboard',
-  computed: {
-    ...mapGetters([
-      'name'
-    ])
-  }
-}
+  const params = { id: 1234}
+  getInfo(params).then(res=>{
+    console.log(res)
+  }).catch(e=>{
+    console.log(e)
+  })
 </script>
 
 <style lang="scss" scoped>
